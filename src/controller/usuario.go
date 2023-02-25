@@ -3,7 +3,9 @@ package controller
 import (
 	"api-go/src/database"
 	"api-go/src/model"
+	"api-go/src/repository"
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -27,6 +29,15 @@ func SaveUsuario(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	repository := repository.CreateRepository(db)
+	id, err := repository.Save(usuario)
+
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	w.Write([]byte(fmt.Sprintf("Id: %d", id)))
 }
 
 func GetAllUsuarios(w http.ResponseWriter, r *http.Request) {
