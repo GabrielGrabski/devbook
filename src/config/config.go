@@ -28,5 +28,5 @@ func GetEnvVars() {
 
 	dbUser, dbPassword, dbName := os.Getenv("DB_USER"), os.Getenv("DB_PASSWORD"), os.Getenv("DB_NAME")
 
-	Dns = fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True&Loc=Local", dbUser, dbPassword, dbName)
+	Dns = fmt.Sprintf("%s:%s@/%s?charset=utf8&parseTime=True", dbUser, dbPassword, dbName)
 }
